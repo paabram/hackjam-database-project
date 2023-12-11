@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src=".\client_script.js"></script>
+    <title>Big Programmer</title>
+</head>
+<body>
+    <h1 id="header">Enter your name and age to have them permanently stored on my computer!</h1>
+    <div class="inputs">
+        <input type="text" id="name" placeholder="Name" />
+        <input type="text" id="age" placeholder="Age" />
+    </div>
+    <div class="user_buttons">
+        <button id="send_button" onclick="sendData()">Send your info to my database!</button>
+        <button id="see_button" onclick="seeData()">Or just see who's already joined</button>
+    </div>
+    <div id="output"></div>
+</body>
+</html>
