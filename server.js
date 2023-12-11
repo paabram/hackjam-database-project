@@ -23,6 +23,7 @@ const db = mysql.createConnection({
 
 function update(name, age, callback) {
     let str = ``;
+    name = name.charAt(0).toUpperCase() + name.slice(1);
     db.query(`INSERT INTO people (name, age) VALUES ('${name}', ${age})`);
     db.query("SELECT * FROM people ORDER BY name;", (err, result) => {
         if (err) {
@@ -87,7 +88,15 @@ server.on('connection', (socket) => {
     } else {
       const messageObj = JSON.parse(messageJSON);
       console.log(`Received ${messageObj.name}, age ${messageObj.age}`);
-      socket.send(`server received ${message}`);
+      // socket.send(`server received ${message}`);
+      // if (messageObj.name == '' || messageObj.age == '') {
+      //   socket.send(`<p>Name and age box cannot be empty.</p>`);
+      //   return;
+      // }
+      // if (!(isNaN(messageObj.age))) {
+      //   socket.send(`<p>Age must be an integer value.</p>`);
+      //   return;
+      // }
       // Send a response to the client
       update(messageObj.name, messageObj.age, (err, result) => {
         if (err) {

@@ -5,7 +5,9 @@ socket.addEventListener('open', (event) => {
     console.log('Connected to the server.');
 });
 
+// when the client receives data from the server
 socket.addEventListener('message', (event) => {
+    // update the output element with the data table
     const output = document.getElementById('output');
     output.innerHTML = `${event.data}`;
 });
@@ -16,7 +18,7 @@ function sendData() {
     if (nameInput.value == '' || ageInput.value == '') {
         alert('Name and age box cannot be empty.');
         return;
-    } else if (!Number.isInteger(ageInput.value)) {
+    } else if (isNaN(ageInput.value)) {
         alert('Age must be a numeric value.');
         
         return;
